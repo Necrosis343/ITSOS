@@ -20,7 +20,7 @@ def init(usr, pw):
     elif usr==sub.name:
         if pw==sub.pw:
             print("Hello, {sub.name}.")
-            act=1
+            act=2
         else:
             print("Invalid!")
     else:
