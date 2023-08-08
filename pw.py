@@ -1,2 +1,2 @@
 usr0=".kmn"
-usr1=""
+usr1=".ist"
