@@ -1,7 +1,4 @@
-pw=".kmn"
-anon='IST'
-vis="Mikhael"
-act=1
+import users
 def init():
     print("""
  ___   _______  _______
@@ -12,3 +9,5 @@ def init():
 |   |  _____| |  |   |
 |___| |_______|  |___| Founded, by Mikhael.
 """)
+def login():
+act=1
