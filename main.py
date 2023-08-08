@@ -10,14 +10,11 @@ def init():
 |   |  _____| |  |   |
 |___| |_______|  |___| Founded, by Mikhael.
 """)
-def login():
-    inp=input("\nUsername: ")
-    if inp==users.king:
-        inp=input("\nPassword: ")
-    elif inp ==users.subject:
-        inp=input("\nPassword: ")
+def login(usr, pw):
+    if usr==users.king:
+        if pw==
+    elif usr==users.subject:
         if inp=
     else:
-        inp=input("\nPassword: ")
         print("Invalid!")
 act=1
