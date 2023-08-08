@@ -1,4 +1,5 @@
 import users
+import pw
 def init():
     print("""
  ___   _______  _______
@@ -10,4 +11,13 @@ def init():
 |___| |_______|  |___| Founded, by Mikhael.
 """)
 def login():
+    inp=input("\nUsername: ")
+    if inp==users.king:
+        inp=input("\nPassword: ")
+    elif inp ==users.subject:
+        inp=input("\nPassword: ")
+        if inp=
+    else:
+        inp=input("\nPassword: ")
+        print("Invalid!")
 act=1
