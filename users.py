@@ -4,4 +4,4 @@ class User:
     self.usr=usr
     self.pw=pw
 
-king=User("Mikhael", pw.)
+king=User("Mikhael", pw.usr0)
