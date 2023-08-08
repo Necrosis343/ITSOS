@@ -20,4 +20,3 @@ if main.act==1:
 
         else:
                 print(f"Invalid!\n")
-~
