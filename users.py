@@ -5,3 +5,4 @@ class User:
     self.pw=pw
 
 king=User("Mikhael", pw.usr0)
+subject=User("IST", pw.usr1)
