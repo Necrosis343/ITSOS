@@ -1,6 +1,5 @@
 import users
 import pw
-act=0
 def init(usr, pw):
     print("""
  ___   _______  _______  _______  _______ 
