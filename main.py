@@ -13,8 +13,13 @@ def init(usr, pw):
     if usr==king.name:
         if pw==king.pw:
             print(f"Hello, {king.name}.")
-    elif usr==users.subject:
-        if inp=
+        else:
+            print("Invalid!")
+    elif usr==sub.name:
+        if pw==sub.pw:
+            print("Hello, {sub.name}.")
+        else:
+            print("Invalid!")
     else:
         print("Invalid!")
 act=1
