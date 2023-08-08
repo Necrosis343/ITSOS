@@ -1,13 +1,13 @@
-import brain
-if brain.act==1:
+import main
+if main.act==1:
         verify=input("\n")
-        if(verify==brain.pw):
-                print(f"\nHello, {brain.vis}.\n")
-                brain.init()
+        if(verify==main.pw):
+                print(f"\nHello, {main.king}.\n")
+                main.init()
                 while(True):
                         cmd=input()
                         if(cmd[:4].lower()=="exit"):
-                                print(f"\nGoodbye, {brain.anon}.\n")
+                                print(f"\nGoodbye, {main.king}.\n")
                                 exit()
 
                         elif(cmd[:4].lower()=="time"):
@@ -19,5 +19,5 @@ if brain.act==1:
                                 print("\nI dont understand.\n")
 
         else:
-                print(f"You're not {brain.anon}!\n")
+                print(f"Invalid!\n")
 ~
