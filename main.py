@@ -1,4 +1,4 @@
-pw="#Mikhael$@!.kmn"
+pw=".kmn"
 anon='IST'
 vis="Mikhael"
 act=1
