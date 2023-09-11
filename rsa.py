@@ -9,11 +9,12 @@ def is_prime(n):
 			return False
 	return True
 
-def gen_prime(min, max):
-	p = random.randint(min, max)
-	while not is_prime(p):
-		prime=random.randint(min, max)
-	return p
+#def gen_prime(min, max):
+#Euler's function, for prime numbers
+#	p = random.randint(min, max)
+#	while not is_prime(p):
+#		prime=random.randint(min, max)
+#	return p
 
 def mod_inverse(e, phi):
 	for d in range(3, phi):
@@ -22,11 +23,11 @@ def mod_inverse(e, phi):
 	raise ValueError("mod_inverse doesn't exist")
 
 #p, q = gen_prime(1000, 5000), gen_prime(1000, 5000)
-p=11
-q=13
-
 #while p==q:
 #	q = gen_prime(1000, 5000)
+
+p=11
+q=13
 
 n = p * q
 
