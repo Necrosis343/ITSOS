@@ -1,7 +1,6 @@
 import socket
 
 ip='192.168.1.131'
-host = socket.getfqdn()
 port=80
 
 try:
@@ -19,7 +18,7 @@ try:
 
 					print(c.recv(1024).decode())
 					c.send("HTTP/1.0 200 OK\n\n".encode())
-					c.send(f"""<html><head><title>RSDT</title><link rel="icon" type="image/x-icon" href=""/></head><body style="background-color: #000000; color: #FF0000; text-align: center;"><h1>I love you!</h1><h1>Your network address; {cip}:{cport}</h1></body></html>""".encode())
+					c.send(f"""<html><head><title>DTRS</title><link rel="icon" type="image/x-icon" href=""/></head><body style="background-color: #0088FF; color: #FFFFFF; text-align: center;"><h1>I love you!</h1><h1>(Your IP):(Your port); {cip}:{cport}</h1></body></html>""".encode())
 					c.close()
 					break
 				except:
