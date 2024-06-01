@@ -1,4 +1,5 @@
 # Python HTTP server
+# TO-DO: Create class, for init, bind, listen.
 
 print("\nInitiating socket...\n")
 import socket
