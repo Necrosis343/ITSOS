@@ -1,4 +1,4 @@
-# Python HTTP server
+# Python HTTP Server
 #Version 1.0
 # TO-DO: Create class, for init, bind, listen.
 
@@ -25,16 +25,16 @@ while wait:
 		import time
 		print(f"\nRetrying in {t} seconds\n")
 		time.sleep(10)
-s.listen(5)
+s.listen()
 print("\nSocket is listening...\n")
+import os
+import sys
 while True:
 	try:
-		import os
-		import sys
 		os.chdir("/home/kali/Documents/TIRD-Website")
 		c,addr=s.accept()
 		print(f"\n{addr} has connected.\n")
-		r=c.recv(1000).split()[1].decode()
+		r=c.recv(1024).split()[1].decode()
 		d=r.strip('/')
 		print(f"Requesting:",r)
 		if r=='/':
@@ -42,7 +42,7 @@ while True:
 			f=open(os.getcwd()+'/index.html')
 			o=f.read()
 			f.close()
-			print("\nSending:",os.getcwd()+r,"\n")
+			print("\nSending:",os.getcwd()+"/index.html","\n")
 			c.sendall(o.encode())
 		if d[-4:]=='.css':
 			f=open(os.getcwd()+'/style.css')
@@ -62,6 +62,11 @@ Content-Type: text/javascript\n
 '''+o
 			print('Sending:', os.getcwd()+r,"\n")
 			c.sendall(js.encode())
+		if d[-4:]=='.ico':
+			ico='''HTTP/1.1 200 OK
+Content-Type: image/x-icon\n'''
+			print('Sending empty icon...')
+			c.sendall(ico.encode())
 		else:
 			f=open(os.getcwd()+r)
 			o=f.read()
