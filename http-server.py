@@ -1,4 +1,5 @@
 # Python HTTP server
+#Version 1.0
 # TO-DO: Create class, for init, bind, listen.
 
 print("\nInitiating socket...\n")
@@ -10,7 +11,7 @@ except socket.error as err:
 	print(f"\nSocket failure!\n{err}\n")
 
 print("\nBinding socket...\n")
-ip="192.168.0.216"
+ip="192.168.0.211"
 port=80
 wait=True
 t=10
@@ -30,13 +31,13 @@ while True:
 	try:
 		import os
 		import sys
-		os.chdir("/Users/mikhael/Documents/TIRD-Website-main")
+		os.chdir("/home/kali/Documents/TIRD-Website")
 		c,addr=s.accept()
 		print(f"\n{addr} has connected.\n")
 		r=c.recv(1000).split()[1].decode()
 		d=r.strip('/')
 		print(f"Requesting:",r)
-		if r=='/index.html' or r=='/':
+		if r=='/':
 			c.sendall('''HTTP/1.1 200 OK\n'''.encode())
 			f=open(os.getcwd()+'/index.html')
 			o=f.read()
@@ -66,7 +67,7 @@ Content-Type: text/javascript\n
 			o=f.read()
 			f.close()
 			http='''HTTP/1.1 200 OK\n'''+o
-			print("Sending:",r,"\n")
+			print("Sending:",os.getcwd()+r,"\n")
 			c.sendall(http.encode())
 		c.close()
 	except socket.error as err:
