@@ -86,5 +86,9 @@ Content-Type: image/x-icon\n'''
     	except socket.error as err:
         print(f"\nCommunication error!\n{err}\n")
 				
-
+server=HTTP-Server()
+server.sock()
+server.bind()
+server.listen()
+server.server()
 
