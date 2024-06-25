@@ -71,7 +71,7 @@ Content-Type: text/javascript\n
     			print('Sending:', os.getcwd()+r,"\n")
   	  		c.sendall(js.encode())
     		if d[-4:]=='.ico':
-  	  		ico='''HTTP/1.1 200 OK
+          ico='''HTTP/1.1 200 OK
 Content-Type: image/x-icon\n'''
     			print('Sending empty icon...')
     			c.sendall(ico.encode())
