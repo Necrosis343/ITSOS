@@ -11,7 +11,7 @@ class HTTP-Server:
 		print("\nInitiating socket...\n")
 		import socket
 		try:
-  	  s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+		  s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     	print("\nSocket initiated!\n")
     except socket.error as err:
     	print(f"\nSocket failure!\n{err}\n")
