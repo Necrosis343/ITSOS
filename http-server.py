@@ -14,7 +14,7 @@ class HTTP-Server:
 		  s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 		  print("\nSocket initiated!\n")
 		except socket.error as err:
-    	print(f"\nSocket failure!\n{err}\n")
+		  print(f"\nSocket failure!\n{err}\n")
 	def bind(self):
 		print("\nBinding socket...\n")
     ip="192.168.0.211"
