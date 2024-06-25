@@ -17,14 +17,14 @@ class HTTP-Server:
 		  print(f"\nSocket failure!\n{err}\n")
 	def bind(self):
 		print("\nBinding socket...\n")
-    ip="192.168.0.211"
-    port=80
-    wait=True
-    t=10
-    while wait:
-    	try:
-    		s.bind((ip,port))
-    		print(f"\nSocket binded to {ip}:{port}\n")
+		ip="192.168.0.211"
+		port=80
+		wait=True
+		t=10
+		while wait:
+		  try:
+				s.bind((ip,port))
+		    print(f"\nSocket binded to {ip}:{port}\n")
   	  	wait=False
     	except socket.error as err:
     		print(f"\nFailed to bind {ip}:{port}!\n{err}\n")
