@@ -84,7 +84,7 @@ Content-Type: image/x-icon\n'''
     			c.sendall(http.encode())
     		c.close()
     	except socket.error as err:
-  	  	print(f"\nCommunication error!\n{err}\n")
+        print(f"\nCommunication error!\n{err}\n")
 				
 
 
