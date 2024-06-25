@@ -12,7 +12,7 @@ class HTTP-Server:
 		import socket
 		try:
 		  s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-				print("\nSocket initiated!\n")
+		print("\nSocket initiated!\n")
 		except socket.error as err:
     	print(f"\nSocket failure!\n{err}\n")
 	def bind(self):
