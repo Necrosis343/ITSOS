@@ -8,7 +8,7 @@ class HTTP-Server:
 		self.major=vmajor
 		self.minor=vminor
 	def sock(self):
-		print("\nInitiating socket...\n")
+    print("\nInitiating socket...\n")
     import socket
     try:
   	  s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
