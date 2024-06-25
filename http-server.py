@@ -5,8 +5,8 @@ class HTTP-Server:
  vmajor= 1
  vminor=1
 	def __init__(self):
-		self.major=1
-		self.minor=1
+		self.major=vmajor
+		self.minor=vminor
 	def sock(self):
 		print("\nInitiating socket...\n")
   import socket
