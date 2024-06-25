@@ -9,8 +9,8 @@ class HTTP-Server:
 		self.minor=vminor
 	def sock(self):
 		print("\nInitiating socket...\n")
-    import socket
-    try:
+		import socket
+		try:
   	  s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     	print("\nSocket initiated!\n")
     except socket.error as err:
