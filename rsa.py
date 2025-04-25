@@ -1,61 +1,80 @@
-import random
 import math 
+import random
 
-def is_prime(n):
-	if n < 2:
-		return
-	for i in range(2, n // 2+1):
-		if n % i == 0:
-			return False
-	return True
+# Custom RSA 
+# By Mikhael
 
-#def gen_prime(min, max):
-#Euler's function, for prime numbers
-#	p = random.randint(min, max)
-#	while not is_prime(p):
-#		prime=random.randint(min, max)
-#	return p
+def is_prime(n, k=5):
+    if n <= 1:
+        return False
+    if n <= 3:
+        return True
+    for _ in range(k):
+        a = random.randint(2, n - 2)
+        r = pow(a, n - 1, n)
+        if r != 1:
+            return False
+    return True
 
-def mod_inverse(e, phi):
-	for d in range(3, phi):
-		if (d* e) % phi ==1:
-			return d
-	raise ValueError("mod_inverse doesn't exist")
+def generate_large_prime(bits):
+    while True:
+        num = random.getrandbits(bits)
+        if is_prime(num):
+            return num
 
-#p, q = gen_prime(1000, 5000), gen_prime(1000, 5000)
-#while p==q:
-#	q = gen_prime(1000, 5000)
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
 
-p=11
-q=13
+def mod_inverse(a, m):
+    m_0, x_0, x_1 = m, 0, 1
 
-n = p * q
+    while a > 1:
+        q = a // m
+        m, a = a % m, m
+        x_0, x_1 = x_1 - q * x_0, x_0
 
-phi_n = (p-1) * (q-1)
+    if a == 1:
+        return x_1 + m_0 if x_1 < 0 else x_1
+    return None    
 
-#e = random.randint(3, phi_n-1)
-#while math.gcd(e, phi_n) != 1:
-#	e = random.randint(3, phi_n-1)
+def generate_keypair(bits=1024):
+    p = generate_large_prime(bits)
+    q = generate_large_prime(bits)
+    print("p%q generated.\n")
+    n = p * q
+    phi = (p - 1) * (q - 1)
+    print("n%phi_n generated\n")
+    
+    e = random.randrange(2, phi-1)
+    while gcd(e, phi) != 1:
+        e = random.randrange(2, phi-1)
+    print("pub generated\n")
+    d = mod_inverse(e, phi)
+    print("priv generated\n")
+    pub = (e, n)
+    priv = (d, n)
+    return pub, priv
 
-e = 7
-d = mod_inverse(e, phi_n)
+def encrypt(plaintext, key):
+    k, n = key
+    number_array = [ord(char) for char in plaintext]
+    cipher_array = [pow(num, k, n) for num in number_array]
+    return cipher_array
 
-print(f"Public key: {e}")
-print(f"Private key: {d}")
-print(f"Phi, of N: {phi_n}")
-print(f"P: {p}")
-print(f"Q: {q}")
+def decrypt(ciphertext, key):
+    k, n = private_key
+    plaintext = [pow(char, k, n) for char in ciphertext]
+    return "".join([chr(char) for char in plaintext])
 
-msg = "Hello"
-
-msg_encoded = [ord(c) for c in msg]
-
-cipher = [pow(c,e,n) for c in msg_encoded]
-
-print(f"Message: {msg}")
-print(f"Encoded Message: {msg_encoded}")
-print(f"Cipher: {cipher}")
-
-decrypt = [pow(ch, d,n) for ch in cipher]
-decrypted = "".join(chr(ch) for ch in decrypt)
-print(decrypted)
+if __name__ == '__main__':
+    public_key, private_key = generate_keypair()
+    print("Keys Generated.\n")
+    message = "OTMK"
+    
+    encrypted_msg = encrypt(message, public_key)
+    decrypted_msg = decrypt(encrypted_msg, private_key)
+    print("Original message:", message)
+    print("Encrypted message:", encrypted_msg)
+    print("Decrypted message:", decrypted_msg)
