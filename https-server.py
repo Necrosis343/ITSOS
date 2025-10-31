@@ -114,6 +114,6 @@ Content-Type: text/css\n
 		self.server()
 
 if __name__ == "__main__":
-	server=HTTPS_Server(addr="10.200.6.169", path="C:\\Users\\Public\\TIRD-Website-main", cert='..\\cert.pem', key='..\\key.pem')
+	server=HTTPS_Server(addr="", path="", cert='./cert.pem', key='../key.pem')
 	server.main()
 
