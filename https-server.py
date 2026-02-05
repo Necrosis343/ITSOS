@@ -73,17 +73,17 @@ class HTTPS_Server:
 					f.close()
 					c.sendall(o.encode())
 					c.close()
-					print(f"\nSent {self.path}\\index.html\n")
+					print(f"\nSent {self.path}/index.html\n")
 				elif r[-5:]==".html":
 					c.sendall('''HTTP/1.1 200 OK\n'''.encode())
-					f=open(r.split("/")[1])
+					f=open(r[1:])
 					o=f.read()
 					f.close()
 					c.sendall(o.encode())
 					c.close()
-					print(f"\nSent {self.path}\\{r.split("/")[1]}\n")
+					print(f"\nSent {self.path}{r[1:]}\n")
 				elif r[-4:]=='.css':
-					f=open(r.split("/")[1])
+					f=open(r[1:])
 					o=f.read()
 					f.close()
 					sty='''HTTP/1.1 200 OK
@@ -91,7 +91,17 @@ Content-Type: text/css\n
 '''+o
 					c.sendall(sty.encode())
 					c.close()
-					print(f"\nSent {self.path}\\style.css\n")
+					print(f"\nSent {self.path}{r[1:]}n")
+				elif r[-4:]==".png":
+					f=open(r[1:], "rb")
+					o=f.read()
+					f.close()
+					png='''HTTP/1.1 200 OK
+Content-Type: image/png\n
+'''
+					c.sendall(png.encode+o)
+					c.close()
+					print(f"\nSent: {self.path}{r[1:]}\n")
 			except Exception as e:
 				print(f"\nERR! {e}\n")
 				return
@@ -114,6 +124,7 @@ Content-Type: text/css\n
 		self.server()
 
 if __name__ == "__main__":
-	server=HTTPS_Server(addr="", path="", cert='./cert.pem', key='../key.pem')
+	server=HTTPS_Server(addr="", path="", cert='./cert.pem', key='./key.pem')
 	server.main()
+
 
